@@ -1,0 +1,16 @@
+
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/garagemanagement
+        username: om
+        password: root
+        driverClassName: org.postgresql.Driver
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        hibernate:
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            ddl-auto: update
+        show-sql: true
+
+

@@ -1,7 +1,5 @@
 package ae.isa.garage.services;
 
-import ae.isa.garage.WebSecurityConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,7 +39,6 @@ public class MyUserDetailsService{
     }
 
     // Password Hashing
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

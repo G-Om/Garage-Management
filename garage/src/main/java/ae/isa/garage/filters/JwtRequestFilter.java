@@ -1,6 +1,7 @@
 package ae.isa.garage.filters;
 
 import ae.isa.garage.services.MyUserDetailsService;
+import ae.isa.garage.services.UserDetailsServiceImpl;
 import ae.isa.garage.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -22,7 +23,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -52,10 +53,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                                 null,
                                 userDetails.getAuthorities()
                         );
+
+                System.out.println("Authenticated User: " +
+                        usernamePasswordAuthenticationToken
+                        );
                 usernamePasswordAuthenticationToken
                         .setDetails( new WebAuthenticationDetailsSource().buildDetails(request));
-
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                System.out.println(SecurityContextHolder.getContext());
             }
         }
         filterChain.doFilter(request, response);
